@@ -1,0 +1,105 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="assets/styles/style.css">
+        <script src="https://kit.fontawesome.com/b9daf60078.js" crossorigin="anonymous"></script>
+        <script src="assets/js/script.js" defer></script>
+        <title>Pomodoro</title>
+    </head>
+
+    <body>
+        <header>
+            <h1>Pomodoro🍅</h1>
+            <button id="botao-inicio" class="hidden" onclick="voltar()">voltar</button>
+        </header>
+        <!-- Construção da tela inicial -->
+        <main class="container">
+            <div class="tempo-container" id="tempo-container">
+                <div class="bloco">
+                    <div class="botoes">
+                        <button type="button" onclick="aumentar('trabalho')" class="botao"><i class="fa-solid fa-circle-up"></i></button>
+                        <button type="button" onclick="diminuir('trabalho')" class="botao"><i class="fa-solid fa-circle-down"></i></button>
+                    </div>
+                    <div class="tempo">
+                        <div class="label">
+                            <h2 id="trabalho" onblur="verifica(this)" contenteditable>25</h2>
+                        </div>
+                        <p>Estudo</p>
+                    </div>
+                </div>
+                <div class="bloco">
+                    <div class="botoes">
+                        <button type="button" onclick="aumentar('pausa')" class="botao"><i class="fa-solid fa-circle-up"></i></button>
+                        <button type="button" onclick="diminuir('pausa')" class="botao"><i class="fa-solid fa-circle-down"></i></button>
+                    </div>
+                    <div class="tempo">
+                        <div class="label">
+                            <h2 id="pausa" onblur="verifica(this)" contenteditable>5</h2>
+                        </div>
+                        <p> Pausa </p>
+                    </div>
+                </div>
+                <div class="bloco">
+                    <div class="botoes">
+                        <button type="button" onclick="aumentar('sessoes')" class="botao"><i class="fa-solid fa-circle-up"></i></button>
+                        <button type="button" onclick="diminuir('sessoes')" class="botao"><i class="fa-solid fa-circle-down"></i></button>
+                    </div>
+                    <div class="tempo">
+                        <div class="label">
+                            <h2 id="sessoes" onblur="verifica(this)" contenteditable>3</h2>
+                        </div>
+                        <p>Sessões </p>
+                    </div>
+                </div>
+                <!--Modais-->
+            </div>
+            <!-- Construção da página do Cronômetro -->
+            <div class="cronometro hidden" id="cronometro-container">
+                <div class="circulo-fora">
+                    <div class="circulo-dentro" id="cronometro">
+                        
+                    </div>
+                </div>
+                <div class="aside">
+                    <h1 id="identificador" class="trabalho">
+
+                    </h1>
+                    <div class="n-sessoes" id="n-sessoes">
+
+                    </div>
+                    <button onclick="play()" class="aside-button" id="play" type="button">
+                        <i class="fa-solid fa-play"></i>
+                    </button>
+                    <button onclick="pause()" class="aside-button hidden" id="pause" type="button">
+                        <i class="fa-solid fa-pause"></i>
+                    </button>
+                </div>
+            </div>
+            <button onclick="iniciar()" class="iniciar" id="iniciar">
+                Iniciar
+            </button>
+            <!-- Modal -->
+            <dialog id="modal">
+                <div class="modal">
+                    <p id="mensagem-modal"></p>
+                    
+                    <div id="botoes-modal">
+                        <button type="button" id="terminar" onclick="voltar()">Terminar</button>
+                        <button type="button" id="reiniciar" class="hidden" onclick="reiniciar()">Reiniciar</button>
+                        <button type="button" id="continuar" onclick="fecharModal()">Continuar</button>
+                    </div>
+                </div>
+                <audio src="./media/alarm.mp3" loop>Alarme</audio>
+            </dialog>
+        </main>
+    </body>
+</html>
+
+
+
+
+
